@@ -1,0 +1,15 @@
+C:\Users\Parisa\Desktop\new\QStore\QStore\obj\Debug\net6.0\QStore.csproj.AssemblyReference.cache
+C:\Users\Parisa\Desktop\new\QStore\QStore\obj\Debug\net6.0\QStore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Parisa\Desktop\new\QStore\QStore\obj\Debug\net6.0\QStore.AssemblyInfoInputs.cache
+C:\Users\Parisa\Desktop\new\QStore\QStore\obj\Debug\net6.0\QStore.AssemblyInfo.cs
+C:\Users\Parisa\Desktop\new\QStore\QStore\obj\Debug\net6.0\QStore.csproj.CoreCompileInputs.cache
+C:\Users\Parisa\Desktop\new\QStore\QStore\bin\Debug\net6.0\QStore.exe
+C:\Users\Parisa\Desktop\new\QStore\QStore\bin\Debug\net6.0\QStore.deps.json
+C:\Users\Parisa\Desktop\new\QStore\QStore\bin\Debug\net6.0\QStore.runtimeconfig.json
+C:\Users\Parisa\Desktop\new\QStore\QStore\bin\Debug\net6.0\QStore.dll
+C:\Users\Parisa\Desktop\new\QStore\QStore\bin\Debug\net6.0\ref\QStore.dll
+C:\Users\Parisa\Desktop\new\QStore\QStore\bin\Debug\net6.0\QStore.pdb
+C:\Users\Parisa\Desktop\new\QStore\QStore\obj\Debug\net6.0\QStore.dll
+C:\Users\Parisa\Desktop\new\QStore\QStore\obj\Debug\net6.0\ref\QStore.dll
+C:\Users\Parisa\Desktop\new\QStore\QStore\obj\Debug\net6.0\QStore.pdb
+C:\Users\Parisa\Desktop\new\QStore\QStore\obj\Debug\net6.0\QStore.genruntimeconfig.cache
