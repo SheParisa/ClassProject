@@ -9,6 +9,7 @@ namespace QStore.Models
     public class ProductModel
     {
         public int ProductId { get; set; }
+        public int CategoryId { get; set; }
         public string ProductName { get; set; }
         //public Tuple<AttributeModel,string ,List<string>> ProductProperty { get; set; }
         public string Description { get; set; }

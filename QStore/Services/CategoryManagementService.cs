@@ -9,21 +9,23 @@ namespace QStore.Services
 {
     public class CategoryManagementService
     {
+        private Random random = new Random();
         private List<CategoryModel>  categories = new List<CategoryModel>();
         public List<CategoryModel> GetCategories()
         {
             return categories;
         }
-        public bool AddCategory(CategoryModel category)
+        public CategoryModel AddCategory(CategoryModel category)
         {
             try
             {
+                category.CategoryId = random.Next();
                 categories.Add(category);
-                return true;
+                return category;
             }
             catch (Exception ex)
             {
-                return false;
+                return null;
             }
         }
     }

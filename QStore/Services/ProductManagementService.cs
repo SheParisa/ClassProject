@@ -42,22 +42,24 @@ namespace QStore.Services
         {
             products.Find(p => p.ProductId == ProductId).productPrroperties = productPrroperties;
         }
-        public bool AddProperty(PropertyModel property)
+        public PropertyModel AddProperty(PropertyModel property)
         {
             try
             {
+                property.PropertyId = random.Next();
                 properties.Add(property);
-                return true;
+                return property;
             }
             catch (Exception ex)
             {
-                return false;
+                return null;
             }
         }
         public bool AddValueProperty(ValuePropertyModel valueProperty)
         {
             try
             {
+                valueProperty.ValuePropertyId = random.Next();
                 values.Add(valueProperty);
                 return true;
             }
@@ -92,6 +94,21 @@ namespace QStore.Services
             return productPrroperties;
 
         }
+        public string GetNameProductPropertiesValue(ProductPrroperty productPrroperty)
+        {
+            return values.Find(v => v.ValuePropertyId == productPrroperty.VProductProperty.Item3).PropertyValue;
+        }
+        public string GetNameProductProperty(ProductPrroperty productPrroperty)
+        {
+            return properties.Find(p => p.PropertyId == productPrroperty.VProductProperty.Item2).Name;
 
+        }
+        public void SetValueProperty(int propertyId, List<string> values)
+        {
+            foreach (string value in values)
+            {
+                AddValueProperty(new ValuePropertyModel() { PropertyId = propertyId, PropertyValue = value });
+            }
+        }
     }
 }
