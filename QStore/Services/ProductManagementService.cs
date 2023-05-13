@@ -9,6 +9,7 @@ namespace QStore.Services
 {
     public class ProductManagementService
     {
+        private Random random = new Random();
         private List<ProductModel> products = new List<ProductModel>();
         private List<PropertyModel> properties = new List<PropertyModel>();
         private List<ValuePropertyModel> values = new List<ValuePropertyModel>();
@@ -24,17 +25,22 @@ namespace QStore.Services
         {
             return values;
         }
-        public bool AddProduct(ProductModel product)
+        public ProductModel AddProduct(ProductModel product)
         {
             try
             {
-            products.Add(product);
-                return true;
+                product.ProductId = random.Next();
+                products.Add(product);
+                return product;
             }
             catch (Exception ex)
             {
-                return false;
+                return null;
             }
+        }
+        public void UpdateProduct(int ProductId, List<ProductPrroperty> productPrroperties)
+        {
+            products.Find(p => p.ProductId == ProductId).productPrroperties = productPrroperties;
         }
         public bool AddProperty(PropertyModel property)
         {
@@ -70,5 +76,22 @@ namespace QStore.Services
             }
             return valueprop;
         }
+        public List<ProductPrroperty> GetListProductPrroperties(int ProductId, List<int> svp)
+        {
+            Random random = new Random();
+            List<ProductPrroperty> productPrroperties = new List<ProductPrroperty>();
+            foreach (int id in svp)
+            {
+                ValuePropertyModel vpm = values.Find(v => v.ValuePropertyId == id);
+                productPrroperties.Add(new ProductPrroperty()
+                {
+                    IdProductProperty = random.Next(),
+                    VProductProperty = new Tuple<int, int, int>(ProductId, vpm.PropertyId, vpm.ValuePropertyId)
+                });
+            }
+            return productPrroperties;
+
+        }
+
     }
 }

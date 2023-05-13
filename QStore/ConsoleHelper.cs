@@ -35,10 +35,11 @@ namespace QStore
                         {
                             productManagement.AddProduct(Product_InputInfo());
                         }
-                        catch {
+                        catch
+                        {
                             Console.Clear();
                             Console.WriteLine("return to main menu!!!");
-                         }
+                        }
                         break;
                     }
                 case Request.AddCategory:
@@ -76,75 +77,107 @@ namespace QStore
 
             if (productManagement.GetProperties() != null)
             {
-                Console.WriteLine("Add a Product (enter xxx to exit)");
-                Console.WriteLine("Name?");
-                string pname = Console.ReadLine();
-                Console.WriteLine("Please choose property");
-                List<int> ids = new List<int>();
-                for (int i = 0; i < productManagement.GetProperties().Count; i++)
-                {
-                    Console.WriteLine($"{0}. {1}",i,productManagement.GetProperties()[i].Name);
-                    int a = Convert.ToInt32( Console.ReadLine());
-                    if (a == i)
-                    {
-                        ids.Add(productManagement.GetProperties()[i].PropertyId);
-                    } 
-                }
+                // Create new product
+                ProductModel product = InputProductData();
+
+                // Different Property to Set
+                List<int> ids = SelectedProperty();
+
                 // to get selected value property
-                List<int> svp_ids = new List<int>();
+                List<int> svp_ids = SelectedValueProperty(ids);
 
-                List<ValuePropertyModel> svp=productManagement.SelectedValueProps(ids);
-                foreach (ValuePropertyModel v in svp)
-                {
-                    Console.WriteLine($"{0}. {1} => {2}",v.ValuePropertyId, v.Name, v.PropertyValue);
-                    int a = Convert.ToInt32(Console.ReadLine());
-                    if (a == v.ValuePropertyId)
-                    {
-                        svp_ids.Add(v.ValuePropertyId);
-                    }
-                }
+                //Integrate information
+                List<ProductPrroperty> productProperties = productManagement.GetListProductPrroperties(product.ProductId, svp_ids);
 
+                // to add properties to product
+                productManagement.UpdateProduct(product.ProductId, productProperties);
 
             }
             else
             {
                 Console.WriteLine("to add a product,first you must add a property");
             }
-            
-            while (pname != "xxx")
-            {
-                AttributeModel attmodel = new AttributeModel();
-                string txtname = "";
-                Tuple<AttributeModel,string, List<string>> tuple = new Tuple<AttributeModel,string, List<string>>(attmodel,txtname, new List<string>());
+            #region CommentedPreviousCode
+            //while (pname != "xxx")
+            //{
+            //    AttributeModel attmodel = new AttributeModel();
+            //    string txtname = "";
+            //    Tuple<AttributeModel,string, List<string>> tuple = new Tuple<AttributeModel,string, List<string>>(attmodel,txtname, new List<string>());
 
 
-                Console.WriteLine("Please write Attribute name? (color/type/description,...)write xxx to exit");
-                string attname = Console.ReadLine();
-                if (attname != "xxx")
-                {
-                    Console.WriteLine("Please write Attribute value?  write xxx to exit");
-                    string attvalue = Console.ReadLine();
-                    attmodel.attributeValues = new Dictionary<string, string>() { { attname, attvalue } };
-                    List<string> list = new List<string>();
-                    Console.WriteLine($"Please write property name for {0}?  write yyy to exit", attname);
-                   txtname = Console.ReadLine();
-                    Console.WriteLine($"Please write property value for {0}?  write yyy to exit", txtname);
+            //    Console.WriteLine("Please write Attribute name? (color/type/description,...)write xxx to exit");
+            //    string attname = Console.ReadLine();
+            //    if (attname != "xxx")
+            //    {
+            //        Console.WriteLine("Please write Attribute value?  write xxx to exit");
+            //        string attvalue = Console.ReadLine();
+            //        attmodel.attributeValues = new Dictionary<string, string>() { { attname, attvalue } };
+            //        List<string> list = new List<string>();
+            //        Console.WriteLine($"Please write property name for {0}?  write yyy to exit", attname);
+            //       txtname = Console.ReadLine();
+            //        Console.WriteLine($"Please write property value for {0}?  write yyy to exit", txtname);
 
-                    string txt = Console.ReadLine();
-                    while (txt != "yyy")
-                    {
-                        Console.WriteLine($"Please write property value for {0}?  write yyy to exit", attname);
+            //        string txt = Console.ReadLine();
+            //        while (txt != "yyy")
+            //        {
+            //            Console.WriteLine($"Please write property value for {0}?  write yyy to exit", attname);
 
-                        if (txt != "yyy")
-                            list.Add(txt);
-                        txt = Console.ReadLine();
-                    }
-                    tuple = Tuple.Create(attmodel,txtname, list);
-                }
+            //            if (txt != "yyy")
+            //                list.Add(txt);
+            //            txt = Console.ReadLine();
+            //        }
+            //        tuple = Tuple.Create(attmodel,txtname, list);
+            //    }
 
-                return new ProductModel() { ProductName = pname, ProductProperty = tuple };
-            }
+            //    return new ProductModel() { ProductName = pname, ProductProperty = tuple };
+            //}
+            #endregion CommentedPreviousCode
             return null;
+        }
+        public ProductModel InputProductData()
+        {
+            ProductModel product = new ProductModel();
+            Console.WriteLine("Add a Product (enter xxx to exit)");
+            Console.WriteLine("Name?");
+            product.ProductName = Console.ReadLine();
+            Console.WriteLine("description?");
+            product.Description = Console.ReadLine();
+            Console.WriteLine("About?");
+            product.About = Console.ReadLine();
+            productManagement.AddProduct(product);
+            return product;
+        }
+        public List<int> SelectedProperty()
+        {
+            List<int> ids=new List<int>();
+            Console.WriteLine("Please choose property(select different number to exit)");
+            for (int i = 0; i < productManagement.GetProperties().Count; i++)
+            {
+                Console.WriteLine($"{0}. {1}", i, productManagement.GetProperties()[i].Name);
+                int a = Convert.ToInt32(Console.ReadLine());
+                if (a == i)
+                {
+                    ids.Add(productManagement.GetProperties()[i].PropertyId);
+                }
+            }
+            return ids;
+        }
+        public List<int> SelectedValueProperty(List<int> ids)
+        {
+            List<int> svp_ids=new List<int>();
+            List<ValuePropertyModel> svp = productManagement.SelectedValueProps(ids);
+            Console.WriteLine("Please choose value property(select different number to exit)");
+
+            foreach (ValuePropertyModel v in svp)
+            {
+                Console.WriteLine($"{0}. {1} => {2}", v.ValuePropertyId, v.Name, v.PropertyValue);
+                int a = Convert.ToInt32(Console.ReadLine());
+                if (a == v.ValuePropertyId)
+                {
+                    svp_ids.Add(v.ValuePropertyId);
+                }
+            }
+            return svp_ids;
         }
         public CategoryModel Category_InputInfo()
         {
@@ -164,7 +197,7 @@ namespace QStore
             {
                 //, product.ProductProperty.Item1.attributeValues[]
                 Console.WriteLine($"{0}\t{1}", product.ProductName);
-                
+
             }
         }
         public void Report_Category()
