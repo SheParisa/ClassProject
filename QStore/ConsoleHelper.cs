@@ -143,7 +143,7 @@ namespace QStore
             product.About = Console.ReadLine();
 
 
-            productManagement.AddProduct(product);
+            product = productManagement.AddProduct(product);
             return product;
         }
         public List<int> SelectedProperty()
@@ -176,8 +176,8 @@ namespace QStore
             foreach (ValuePropertyModel v in svp)
             {
                 Console.WriteLine(v.ValuePropertyId + ". " + v.Name + " : " + v.PropertyValue);
-             }
-            int a = Convert.ToInt32(Console.ReadLine()); 
+            }
+            int a = Convert.ToInt32(Console.ReadLine());
             do
             {
                 if (svp.Find(s => s.ValuePropertyId == a) != null)
@@ -236,13 +236,13 @@ namespace QStore
             {
                 //, product.ProductProperty.Item1.attributeValues[]
                 Console.WriteLine("productId \t ProductName \t About \n description");
-                Console.WriteLine("{0}\t{1}\t{2}\t{3}",product.ProductId,product.ProductName,product.About,product.Description);
+                Console.WriteLine("{0}\t{1}\t{2}\t{3}", product.ProductId, product.ProductName, product.About, product.Description);
                 Console.WriteLine("Properties:\n");
-                foreach(ProductPrroperty p in product.productPrroperties)
+                foreach (ProductPrroperty p in product.productPrroperties)
                 {
-                    Console.WriteLine("{0} => {1}",productManagement.GetNameProductProperty(p), productManagement.GetNameProductPropertiesValue(p));
-                    
-                    
+                    Console.WriteLine("{0} => {1}", productManagement.GetNameProductProperty(p), productManagement.GetNameProductPropertiesValue(p));
+
+
                 }
 
             }

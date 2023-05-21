@@ -1,0 +1,12 @@
+C:\Users\Parisa\Desktop\new\QStore\QStore.Domain\bin\Debug\net6.0\QStore.Domain.deps.json
+C:\Users\Parisa\Desktop\new\QStore\QStore.Domain\bin\Debug\net6.0\QStore.Domain.dll
+C:\Users\Parisa\Desktop\new\QStore\QStore.Domain\bin\Debug\net6.0\ref\QStore.Domain.dll
+C:\Users\Parisa\Desktop\new\QStore\QStore.Domain\bin\Debug\net6.0\QStore.Domain.pdb
+C:\Users\Parisa\Desktop\new\QStore\QStore.Domain\obj\Debug\net6.0\QStore.Domain.csproj.AssemblyReference.cache
+C:\Users\Parisa\Desktop\new\QStore\QStore.Domain\obj\Debug\net6.0\QStore.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Parisa\Desktop\new\QStore\QStore.Domain\obj\Debug\net6.0\QStore.Domain.AssemblyInfoInputs.cache
+C:\Users\Parisa\Desktop\new\QStore\QStore.Domain\obj\Debug\net6.0\QStore.Domain.AssemblyInfo.cs
+C:\Users\Parisa\Desktop\new\QStore\QStore.Domain\obj\Debug\net6.0\QStore.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Parisa\Desktop\new\QStore\QStore.Domain\obj\Debug\net6.0\QStore.Domain.dll
+C:\Users\Parisa\Desktop\new\QStore\QStore.Domain\obj\Debug\net6.0\ref\QStore.Domain.dll
+C:\Users\Parisa\Desktop\new\QStore\QStore.Domain\obj\Debug\net6.0\QStore.Domain.pdb

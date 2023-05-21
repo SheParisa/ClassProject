@@ -9,7 +9,8 @@ namespace QStore.Models
     public class ProductPrroperty
     {
         public int IdProductProperty { get; set; }
-        
-        public Tuple<int ,int, int> VProductProperty { get; set; }
+
+       // private Tuple<int, int, int> fdguple = new Tuple<int, int, int>(1, 1, 1);
+        public Tuple<int, int, int> VProductProperty { get; set; }= new Tuple<int, int, int>(1, 1, 1);
     }
 }
